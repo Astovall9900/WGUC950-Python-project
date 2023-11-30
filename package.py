@@ -21,17 +21,17 @@ class Package:
         return "ID: %s, %-20s, %s, %s,%s, Deadline: %s,%s,%s,Departure Time: %s,Delivery Time: %s" % (self.ID, self.street, self.city, self.state, self.zip, self.deadline, self.weight, self.status, self.departure_time, self.delivery_time)
 
     # This method will update the status of a package depending on the time entered
-    def status_update(self, time_change):
+    def status_update(self, time):
         if self.delivery_time is None:
             self.status = "At the hub"
-        elif time_change < self.departure_time:
+        elif time < self.departure_time:
             self.status = "At the hub"
-        elif time_change < self.delivery_time:
+        elif time < self.delivery_time:
             self.status = "Out for delivery"
         else:
-            self.status = "Delivered" 
+            self.status = "Delivered"
         if self.ID == 9:  # special case package 9 will need to change the address
-            if time_change > datetime.timedelta(hours=10, minutes=20):
+            if time > datetime.timedelta(hours=10, minutes=20):
                 self.street = "410 S State St"
                 self.zip = "84111"
             else:
