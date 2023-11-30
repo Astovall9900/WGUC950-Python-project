@@ -32,6 +32,8 @@ B.  Develop a look-up function that takes the package ID as input and returns ea
 
 •   delivery status (i.e., at the hub, en route, or delivered), including the delivery time
 """
+
+
 class HashTable:
     """
     we have 40 packages so the default capacity of the hashtable is 40
