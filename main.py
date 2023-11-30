@@ -91,7 +91,7 @@ def main():
                 next_package = parcel
                 # if a truck has these priority packages then they must be delivered first / immediately
                 if parcel.ID in [25, 6]:
-                    next_add_distance = calc_distance(find_address(vehicle.currentLocation), find_address(parcel.street))
+                    next_add_distance = calc_distance(find_address(vehicle.current_location), find_address(parcel.street))
                     break
                 # go through and find the shortest distance after the current parcel route
                 if calc_distance(find_address(vehicle.current_location), find_address(parcel.street)) <= next_add_distance:
@@ -119,7 +119,10 @@ def main():
 
     # Actual application start for user
     print("Western Governors University Parcel Delivery Service!!")
-    print("The Total mileage for the route is: " + (truck1.miles + truck2.miles + truck3.miles))
+    print("The Total mileage for the route is: " + str(truck1.miles + truck2.miles + truck3.miles))
+    print("Truck 1: " + str(truck1.miles))
+    print("Truck 2: " + str(truck2.miles))
+    print("Truck 3: " + str(truck3.miles))
 
     # Task D
     while True:
@@ -134,12 +137,12 @@ def main():
             parcel_id = int(input("enter package ID to see specific package, otherwise see all: "))
             pack = package_hash.look_up(parcel_id)
             pack.status_update(time)
-            print(str(package))
+            print(str(pack))
         except ValueError:
             for p_id in package_list:
                 pack = package_hash.look_up(p_id)
                 pack.status_update(time)
-                print(str(package))
+                print(str(pack))
     return
 
 
